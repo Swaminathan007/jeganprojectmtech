@@ -1,0 +1,32 @@
+{%extends "base.html"%}
+{%block content%}
+    
+    <div class="container pt-5">
+        
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <h2>Recovery Boiler</h2>
+            <div class="row">
+                {%for i in grades%}
+                    <div class="col-sm">
+                        <div class="card">
+                            <div class="card-header">
+                                {{i[0]}} Grade Concrete
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Concrete thickness</h5>
+                                <ul>
+                                    <li><a href = "/{{i[0]}}/min">Minimum:{{i[1]}}mm</a></li>
+                                    <li><a href = "/{{i[0]}}/max">Maximum:{{i[2]}}mm</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {%endfor%}
+            </div>
+            
+        </div>
+    </div>
+    
+    
+        
+{%endblock%}
