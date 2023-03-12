@@ -6,7 +6,7 @@
         <div class="shadow p-3 mb-5 bg-body rounded">
             <h2>Recovery Boiler</h2>
             <div class="row">
-                {%for i in grades%}
+                {%for i in minmax%}
                     <div class="col-sm">
                         <div class="card">
                             <div class="card-header">
@@ -15,8 +15,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">Concrete thickness</h5>
                                 <ul>
-                                    <li><a href = "/{{i[0]}}/min">Minimum:{{i[1]}}mm</a></li>
-                                    <li><a href = "/{{i[0]}}/max">Maximum:{{i[2]}}mm</a></li>
+                                    <li><a href="/{{i[0]}}/min">Minimum:{{i[1]}}mm</a></li>
+                                    <li><a href="/{{i[0]}}/max">Maximum:{{i[2]}}mm</a></li>
                                 </ul>
                             </div>
                         </div>

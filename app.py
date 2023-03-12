@@ -1,13 +1,9 @@
 from flask import *
-import mysql.connector 
-cafile = "cacert.pem"
-mydb = mysql.connector.connect(host="ap-south.connect.psdb.cloud",user="qhre1rt0s6h5qlp7n6tk",
-                       password="pscale_pw_NKSuRuXf76xK5a2LoF1rjBfl7t4ngHEV3stdY8QQdET",database="jegancivilproject",
-                       ssl_ca = cafile)
-# db_conn_string = "mysql+mysqlconnector://qhre1rt0s6h5qlp7n6tk:pscale_pw_NKSuRuXf76xK5a2LoF1rjBfl7t4ngHEV3stdY8QQdET@ap-south.connect.psdb.cloud/jegancivilproject?charset=utf8mb4"
-# mydb = create_engine(db_conn_string,echo=False)
-# cur = mydb.connect()
-cur = mydb.cursor()
+grades = {
+    "M30":{250:150,300:200},
+    "M35":{200:150,300:175},
+    "M40":{200:150,300:200}
+}
 app =Flask(__name__)
 app.config["SECRET_KEY"] = "1234"
 @app.route("/")
@@ -15,21 +11,20 @@ def home():
     return render_template("home.html")
 @app.route("/recovery")
 def recovery():
-    cur.execute("select * from recoveryboiler")
-    recs = cur.fetchall()
-    grades = []
-    for i in recs:
-        grades.append([i[0],i[1],i[3]])
-    return render_template("recovery.html",grades = grades)
+    minmax = []
+    for i in grades:
+        keys = list(grades[i].keys())
+        print(keys)
+        minmax.append([i,keys[0],keys[1]])
+    return render_template("recovery.html",minmax=minmax)
 @app.route("/<grade>/<op>")
 def hetspacing(grade,op):
     spacing = None
+    keys = list(grades[grade].keys())
     if(op == "min"):
-        cur.execute(f"select rod_min from recoveryboiler where grade = '{grade}'")
-        spacing = cur.fetchall()[0][0]
+        spacing = grades[grade][keys[0]]
     else:
-        cur.execute(f"select rod_max from recoveryboiler where grade = '{grade}'")
-        spacing = cur.fetchall()[0][0]
+         spacing = grades[grade][keys[1]]
     return render_template("rodthickness.html",spacing=str(spacing))
 @app.route("/power")
 def power():
