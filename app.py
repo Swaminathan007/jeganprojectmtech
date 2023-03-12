@@ -1,6 +1,11 @@
 from flask import *
 import mysql.connector 
-mydb = mysql.connector.connect(host="localhost",username="root",password="1234",database="civilproject")
+from sqlalchemy import create_engine,text
+mydb = mysql.connector.connect(host="ap-south.connect.psdb.cloud",username="qhre1rt0s6h5qlp7n6tk",
+                       password="pscale_pw_NKSuRuXf76xK5a2LoF1rjBfl7t4ngHEV3stdY8QQdET",database="jegancivilproject")
+# db_conn_string = "mysql+mysqlconnector://qhre1rt0s6h5qlp7n6tk:pscale_pw_NKSuRuXf76xK5a2LoF1rjBfl7t4ngHEV3stdY8QQdET@ap-south.connect.psdb.cloud/jegancivilproject?charset=utf8mb4"
+# mydb = create_engine(db_conn_string,echo=False)
+# cur = mydb.connect()
 cur = mydb.cursor()
 app =Flask(__name__)
 app.config["SECRET_KEY"] = "1234"
@@ -16,7 +21,7 @@ def recovery():
         grades.append([i[0],i[1],i[3]])
     return render_template("recovery.html",grades = grades)
 @app.route("/<grade>/<op>")
-def jfi(grade,op):
+def hetspacing(grade,op):
     spacing = None
     if(op == "min"):
         cur.execute(f"select rod_min from recoveryboiler where grade = '{grade}'")
