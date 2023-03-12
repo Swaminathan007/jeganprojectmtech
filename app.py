@@ -14,7 +14,6 @@ def recovery():
     minmax = []
     for i in grades:
         keys = list(grades[i].keys())
-        print(keys)
         minmax.append([i,keys[0],keys[1]])
     return render_template("recovery.html",minmax=minmax)
 @app.route("/<grade>/<op>")
