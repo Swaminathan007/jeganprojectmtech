@@ -1,6 +1,6 @@
 from flask import *
 import mysql.connector 
-mydb = mysql.connector.connect(host="ap-south.connect.psdb.cloud",username="qhre1rt0s6h5qlp7n6tk",
+mydb = mysql.connector.connect(host="ap-south.connect.psdb.cloud",user="qhre1rt0s6h5qlp7n6tk",
                        password="pscale_pw_NKSuRuXf76xK5a2LoF1rjBfl7t4ngHEV3stdY8QQdET",database="jegancivilproject")
 # db_conn_string = "mysql+mysqlconnector://qhre1rt0s6h5qlp7n6tk:pscale_pw_NKSuRuXf76xK5a2LoF1rjBfl7t4ngHEV3stdY8QQdET@ap-south.connect.psdb.cloud/jegancivilproject?charset=utf8mb4"
 # mydb = create_engine(db_conn_string,echo=False)
