@@ -1,7 +1,30 @@
-{%extends "base.html"%}
 {%block content%}
+<style>
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #box1{
+    width:60%;
+    height:50%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: center;
+    top:10%;
+    }
+    #box2{
+        width:60%;
+        height:20%;
+        position: absolute;
+        left:20%;
+        top:30%;
+    }
+</style>
 
-    <div style="text-align: center;">
-        Y12 @ {{spacing}} mm spacing
+    <div id="box1">
+        <h2>Spacing to be given</h2>
+            <div id="box2">
+                <p>Y12 @ {{spacing}} mm spacing</p>
+            </div>
     </div>
 {%endblock%}
